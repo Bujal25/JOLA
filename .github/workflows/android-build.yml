@@ -22,20 +22,22 @@ jobs:
 
       - name: Create buildozer.spec
         run: |
-          printf "[app]\n\
-title = SBJ_for_JOLA\n\
-package.name = jola123jola\n\
-package.domain = org.example\n\
-source.dir = .\n\
-source.include_exts = py,html,css,js,mp3,jpg,png\n\
-version = 1.0\n\
-requirements = python3,kivy\n\
-orientation = portrait\n\
-fullscreen = 1\n\
-\n\
-[buildozer]\n\
-log_level = 2\n\
-warn_on_root = 1\n" > buildozer.spec
+          cat <<EOF > buildozer.spec
+[app]
+title = SBJ_for_JOLA
+package.name = jola123jola
+package.domain = org.example
+source.dir = .
+source.include_exts = py,html,css,js,mp3,jpg,png
+version = 1.0
+requirements = python3,kivy
+orientation = portrait
+fullscreen = 1
+
+[buildozer]
+log_level = 2
+warn_on_root = 1
+EOF
 
       - name: Add dummy main.py
         run: echo 'print("hello")' > main.py
